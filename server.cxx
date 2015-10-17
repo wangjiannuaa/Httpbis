@@ -6,6 +6,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <error.h>
+#include <pthread.h>
+#include <malloc.h>
+
+struct thread_info{
+  pthread_t thread_id;//kernel id returned by pthread_create
+  int thread_num;//application defined id
+  char* argv_string;
+};
+
+
+void* threadfunction(void* arg){
+  
+  
+}
 
 server::server(A_WORK_FUNC a_work_func,int port){
 
@@ -43,15 +57,23 @@ server::server(A_WORK_FUNC a_work_func,int port){
   }
 
   while(1){
+
     temp_sock_descriptor =
       accept(sock_descriptor,(struct sockaddr *) &pin,
-	     &address_size);
+	     &address_size);//blocking
 
     if(temp_sock_descriptor == -1)
     {
       perror("call to accept");
       exit(1);
     }
+
+    struct thread_info* tinfo=(struct thread_info*)malloc(sizeof(struct thread_info));
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+
+    int  succuss=pthread_create(&tinfo->thread_id,&attr,threadfunction,tinfo);
+    
 
     if(recv(temp_sock_descriptor,buf,4000,0) == -1)
     {
