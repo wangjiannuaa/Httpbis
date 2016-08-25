@@ -1,0 +1,3 @@
+RFC draft-ietf-httpbis-alt-svc-06
+a different protocol configuration used to access the same resources with the Origin.
+Main enhancement includes the ALTSVC header,An Application Layer Protocol Negotiation (ALPN) protocol,host,port,freshness lifetime.
