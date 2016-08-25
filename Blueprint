@@ -1,3 +1,16 @@
 RFC draft-ietf-httpbis-alt-svc-06
+
 a different protocol configuration used to access the same resources with the Origin.
 Main enhancement includes the ALTSVC header,An Application Layer Protocol Negotiation (ALPN) protocol,host,port,freshness lifetime.
+Illustrated a little below:
+  An HTTP(S) origin server can advertise the availability of
+   alternative services to clients by adding an Alt-Svc header field to
+   responses.
+  such as optional new host and new port,new protocol
+  
+    The Alt-Used header field is used in requests to indicate the
+   identity of the alternative service in use, just as the Host header
+   field (Section 5.4 of [RFC7230]) identifies the host and port of the
+   origin.
+  
+
