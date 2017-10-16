@@ -26,7 +26,6 @@ void server::work_func(char* command,char* return_buffer ,int return_buffer_size
 
 }
 
-
  void timerhandler(int num)
  {
     //do something   
@@ -133,4 +132,5 @@ server::server(int port){
 }
 
 server::~server(){
+  printf("Server is being destroyed");
 }
